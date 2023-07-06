@@ -1,0 +1,192 @@
+<style>
+ 
+ 
+ 
+    .message-box {
+      width: 200px;
+      height: 50px;
+      border-radius: 25px;
+      background-color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .message-box h3 {
+      color: white;
+    }
+  </style>
+
+
+
+
+<main class="main-wrap">
+
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Order Detail</h2>
+                <p>Details For Order Id: <%=order.orders[0]._id%>
+                </p>
+                
+            </div>
+        </div>
+        <div class="card">
+            <header class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
+                        <span>
+                            <i class="material-icons md-calendar_today"></i> <b>
+                                <%=getDate(order.orders[0].createdAt)%>
+                            </b>
+                        </span> <br>
+                        <small class="text-muted">Order ID: <%=order.orders[0]._id%></small>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 ms-auto text-md-end">
+                        <form action="/admin/order_details?orderId=<%=order.orders[0]._id%>" method="POST">
+                            <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" name="status">
+                                <option>Awaiting Payment</option>
+                                <option>Cancelled</option>
+                                <option>Success</option>
+                                <option>Shipped</option>
+                                <option>Delivered</option>
+                                <option>Returned</option>
+
+                            </select>
+
+                            <button type="submit" class="btn btn-primary"> Save</button>
+                        </form>
+
+                    </div>
+                </div>
+            </header> <!-- card-header end// -->
+            <div class="card-body">
+                <div class="row mb-50 mt-20 order-info-wrap">
+                    <div class="col-md-4">
+                        <article class="icontext align-items-start">
+                            <span class="icon icon-sm rounded-circle bg-primary-light">
+                                <i class="text-primary material-icons md-person"></i>
+                            </span>
+                            <div class="text">
+                                <h6 class="mb-1">Customer</h6>
+                                <p class="mb-1">
+                                    <%=order.orders[0].shippingAddress.item.fname%> <br>
+                                        <%=order.orders[0].shippingAddress.item.email%> <br>
+                                            <%=order.orders[0].shippingAddress.item.mobile%>
+                                </p>
+                                <a href="#"></a>
+                            </div>
+                        </article>
+                    </div> <!-- col// -->
+                    <div class="col-md-4">
+                        <article class="icontext align-items-start">
+                            <span class="icon icon-sm rounded-circle bg-primary-light">
+                                <i class="text-primary material-icons md-local_shipping"></i>
+                            </span>
+                            <div class="text">
+                                <h6 class="mb-1">Order Info</h6>
+                                <p class="mb-1">
+                                    Shipping: WATHTOPIA <br> Pay Method:<%=order.orders[0].paymentmode%><br> Payment
+                                        Status:
+                                        <%=order.orders[0].paymentStatus%>
+                                            <!-- <br> OrderStatus:<%=order.orders[0].OrderStatus%> -->
+                                </p>
+                                <a href="#"></a>
+                            </div>
+                        </article>
+                    </div> <!-- col// -->
+                    <div class="col-md-4">
+                        <article class="icontext align-items-start">
+                            <span class="icon icon-sm rounded-circle bg-primary-light">
+                                <i class="text-primary material-icons md-place"></i>
+                            </span>
+                            <div class="text">
+                                <h6 class="mb-1">Deliver To</h6>
+                                <p class="mb-1">
+
+                                    <br>
+                                    <%=order.orders[0].shippingAddress.item.apartment%>,
+                                        <%=order.orders[0].shippingAddress.item.street%>, Floor 2
+                                            <%=order.orders[0].shippingAddress.item.city%><br>
+                                                <%=order.orders[0].shippingAddress.item.pincode%><br>
+                                                    <%=order.orders[0].shippingAddress.item.state%>
+                                </p>
+                                <a href="#"></a>
+                            </div>
+                        </article>
+                    </div> <!-- col// -->
+                </div> <!-- row // -->
+
+                <div>
+                    <h4>Customer Status: </h4>
+                    <div class="message-box">
+                     <h3><%= order.orders[0].messageStatus %></h3>
+                    </div>
+                   </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="40%">Product</th>
+                                        <th width="20%"> Price</th>
+                                        <th width="20%">Quantity</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% products?.forEach(function(order) { %>
+                                        <tr>
+                                            <td>
+                                                <a class="itemside" href="#">
+                                                    <div class="left">
+                                                        <img src="/uploads/<%=order.image%>" width="40" height="40"
+                                                            class="img-xs" alt="Item">
+                                                    </div>
+                                                    <div class="info">
+                                                        <%=order. productsName%>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <%=order.productsPrice%>
+                                            </td>
+                                            <td>
+                                                <%=order.quantity%>
+                                            </td>
+                                            <% }) %>
+
+                                                
+
+                                        </tr>
+
+                                </tbody>
+                               <h3>Total Price: <%=total%></h3> 
+                            </table>
+                           
+                        </div> <!-- table-responsive// -->
+                    </div> <!-- col// -->
+                    <div class="col-lg-6">
+
+                    </div>
+                </div> <!-- card-body end// -->
+            </div> <!-- card end// -->
+    </section> <!-- content-main end// -->
+</main>
+
+
+
+
+<script>
+    function toggleTable() {
+        var table = document.getElementById("myTable");
+        if (table.style.display === "none") {
+            table.style.display = "table";
+        } else {
+            table.style.display = "none";
+        }
+    }
+</script>

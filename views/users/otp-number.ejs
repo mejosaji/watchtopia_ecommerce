@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Evara - eCommerce HTML Template</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="">
+        <meta property="og:type" content="">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
+        <!-- Template CSS -->
+        <link rel="stylesheet" href="assets/css/main.css">
+    </head>
+<body>
+<section class="pt-150 pb-150">
+<div class="container">
+        <div class="row">
+            <div class="col-lg-10 m-auto">
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <form action="/otp-verify" method="post">
+                                    <div class="form-group">
+                                        <input required="" type="text" id="otp" name="Number"
+                                            placeholder="otp">
+                                         
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-fill-out btn-block hover-up"
+                                            name="signup" >Register</button>
+                                            <span id="submitErr"
+                                            style="color: red; font-size: medium; margin-top: 5px;"></span>  
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- Preloader Start -->
+
+<!-- Vendor JS-->
+
+</body>
+
+<script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+<script src="assets/js/plugins/slick.js"></script>
+<script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+<script src="assets/js/plugins/wow.js"></script>
+<script src="assets/js/plugins/jquery-ui.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.js"></script>
+<script src="assets/js/plugins/magnific-popup.js"></script>
+<script src="assets/js/plugins/select2.min.js"></script>
+<script src="assets/js/plugins/waypoints.js"></script>
+<script src="assets/js/plugins/counterup.js"></script>
+<script src="assets/js/plugins/jquery.countdown.min.js"></script>
+<script src="assets/js/plugins/images-loaded.js"></script>
+<script src="assets/js/plugins/isotope.js"></script>
+<script src="assets/js/plugins/scrollup.js"></script>
+<script src="assets/js/plugins/jquery.vticker-min.js"></script>
+<script src="assets/js/plugins/jquery.theia.sticky.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<!-- Template  JS -->
+<script src="assets/js/main.js"></script>
+<script>
+
+function validateOTP() {
+  const otp = document.getElementById('otp').value;
+  const regex = /^[0-9]{6}$/;
+  if (!regex.test(otp)) {
+    document.getElementById('otpErr').innerHTML = 'Invalid OTP';
+    return false;
+  } else {
+    document.getElementById('otpErr').innerHTML = '';
+    return true;
+  }
+}
+
+function validateSubmit() { 
+    const otpValid = validateOTP();
+    if ( !otpValid) {
+        document.getElementById('submitErr').innerHTML = 'Error submitting. Please fill all fields correctly.';
+        return false;
+    } else {
+        document.getElementById().submit();
+        return true;
+    }
+}
+
+</script>
+</html>
