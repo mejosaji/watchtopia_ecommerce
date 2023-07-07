@@ -46,7 +46,7 @@ getLogin:(req, res) => {
       if (req.session.adminloggedIn) {
         req.session.user=null
         req.session.adminloggedIn = false
-        res.redirect('/admin/login')
+        res.redirect('/admin/')
       }
       
     } catch (error) {
@@ -59,12 +59,12 @@ getLogin:(req, res) => {
       req.body.email == adminCredential.email &&
       req.body.password == adminCredential.password
     ) {
-      (req.session.admin = adminCredential), (req.session.adminloggedIn = true);
+      req.session.admin = adminCredential;
+      req.session.adminloggedIn = true;
       adminloginErr = false;
-      adminStatus = req.session.adminloggedIn;
+      adminStatus = true;
 
-      res.render("admin/adminHome",{layout:"adminLayout", adminloginErr,
-      adminStatus});
+      res.redirect("/admin/");
     } else {
       adminloginErr = true;
 

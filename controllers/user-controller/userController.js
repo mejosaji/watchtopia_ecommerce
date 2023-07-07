@@ -472,10 +472,21 @@ module.exports = {
 
     orderId=req.params.id
     console.log(req.params.id,'pppppppppppppp');
-    var message = "canceled"
+    var message = "Canceled"
     userHelper.customerStatusChange(orderId,message)
 
     res.redirect('/order_details?order='+orderId)
+  },
+
+  returnOrder:(req,res)=>{
+
+    orderId=req.params.id
+    console.log(req.params.id,'pppppppppppppp');
+    var message = "Returned"
+    userHelper.customerStatusChange(orderId,message)
+
+    res.redirect('/order_details?order='+orderId)
+
   }
 
 
