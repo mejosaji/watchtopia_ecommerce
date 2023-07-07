@@ -41,7 +41,7 @@
                                   Dropdown
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <% Cat_response.forEach(function(cat){%>
+                                    <% Cat_response?.forEach(function(cat){%>
                                 <a href="/category-filter?id=<%=cat._id %>"> <li><button class="dropdown-item" type="button"><%=cat.categoryName %></button></li></a> 
                                   <!-- <li><button class="dropdown-item" type="button">Dropdown item</button></li>
                                   <li><button class="dropdown-item" type="button">Dropdown item</button></li> -->

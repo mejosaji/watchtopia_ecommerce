@@ -168,6 +168,7 @@ getCategory:async(req, res)=>{
 },
   postCategory: (req, res) => {        
     let admins=req.session.admin.name
+    adminStatus = req.session.adminloggedIn;
     // adminHelper.addCategory(req.body).then((data) => {
       adminHelper.addCategory(req.body).then((response)=>{
 
@@ -180,8 +181,9 @@ getCategory:async(req, res)=>{
           viewCategory = response;
           console.log(viewCategory);
           res.render("admin/addCategory", {
-            layout: "adminLayout",
+            layout: 'adminLayout',
              admins,
+             adminStatus,
             viewCategory,
             categoryStatus,
           });
