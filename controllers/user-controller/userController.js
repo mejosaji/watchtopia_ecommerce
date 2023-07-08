@@ -273,11 +273,11 @@ module.exports = {
 
       const addressData = await db.address.findOne({ userid: userid });
 
-
+      const ad_data = addressData === null ? [] : addressData.Address
       console.log(addressData,
         'tdtdftdrdrftgyhugytfred4ws');
 
-      res.render('users/checkoutPage', { addresses: addressData.Address, users, userId, cartItems, total, count });
+      res.render('users/checkoutPage', { addresses: ad_data, users, userId, cartItems, total, count });
 
     } catch (error) {
       res.status(500).send('Error fetching addresses');
