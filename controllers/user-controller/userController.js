@@ -9,8 +9,8 @@ const { response } = require('express')
 
 module.exports = {
   login: (req, res) => {
-    const clientip = req.clientIP
-    console.log('IP Address',clientip);
+    const clientipAdd = req.clientIP
+    console.log('IP Address',clientipAdd, "req.ip",req.ip);
     res.render('users/login')
   },
 
