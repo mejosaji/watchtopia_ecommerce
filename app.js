@@ -14,7 +14,7 @@ var app = express();
 
 app.set('trust proxy',true)
 app.use((req,res,next)=>{
-  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
   req.clientIP = ip;
   next()
 })
