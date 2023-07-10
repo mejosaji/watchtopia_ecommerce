@@ -12,6 +12,12 @@ require('dotenv').config();
 const db = require('./models/connection')
 var app = express();
 
+app.use((req,res,next)=>{
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  req.clientIP = ip;
+  next()
+})
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -32,6 +38,7 @@ app.use(
 );
 app.use('/', usersRouter);
 app.use('/admin', adminRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

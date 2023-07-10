@@ -9,6 +9,8 @@ const { response } = require('express')
 
 module.exports = {
   login: (req, res) => {
+    const clientip = req.clientIP
+    console.log('IP Address',clientip);
     res.render('users/login')
   },
 
@@ -63,9 +65,6 @@ module.exports = {
       let count = await cartHelper.getCartItemsCount(req.session.user.id);
 
       let category =adminHelper.findAllCategory()
-      let ip = req.ip
-      console.log(users,"ip address",ip);
-      console.log('username');
       res.render('users/homePg', { users, count,category })
     } else {
       res.render('users/homePg')
