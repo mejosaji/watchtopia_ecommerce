@@ -63,8 +63,8 @@ module.exports = {
       let count = await cartHelper.getCartItemsCount(req.session.user.id);
 
       let category =adminHelper.findAllCategory()
-      
-      console.log(users);
+      let ip = req.ip
+      console.log(users,"ip address",ip);
       console.log('username');
       res.render('users/homePg', { users, count,category })
     } else {
